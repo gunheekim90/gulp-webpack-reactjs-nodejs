@@ -11,8 +11,16 @@ var _articles2 = _interopRequireDefault(_articles);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
+app.engine('html', require('ejs').renderFile);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'html');
 
-app.use('/', _express2.default.static(__dirname + '/../dist'));
+app.use(_express2.default.static(__dirname + '/public'));
+
+app.get('/', function (req, res) {
+
+	res.render('index', { user: 'sex' });
+});
 
 app.get('/hello', function (req, res) {
 

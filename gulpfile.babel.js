@@ -2,7 +2,7 @@
 
 import babel from 'gulp-babel';
 import Cache from 'gulp-file-cache';
-let cache = new Cache();
+
 import gulp from 'gulp';
 import gutil from 'gulp-util';
 import nodemon from 'gulp-nodemon';
@@ -16,24 +16,31 @@ import webpackConfig from './webpack.config.js';
 
 import browserSync from 'browser-sync';
 
+
+let cache = new Cache();
+
 const DIR = {
 	    SRC: 'src',
-	    DEST: 'dist'
+	    DEST: 'dist',
+	    VIEW : 'views'
 };
 
 const SRC = {
 	    JS: DIR.SRC + '/js/*.js',
 	    CSS: DIR.SRC + '/css/*.css',
 	    HTML: DIR.SRC + '/*.html',
+	    VIEW: DIR.VIEW + '/*.html',
 	    IMAGES: DIR.SRC + '/images/*',
 	    SERVER : 'server/**/*.js'
 };
+
 
 const DEST = {
 	    JS: DIR.DEST + '/js',
 	    CSS: DIR.DEST + '/css',
 	    HTML: DIR.DEST + '/',
 	    IMAGES: DIR.DEST + '/images',
+	    VIEW: 'app/views',
 	    SERVER : 'app'
 };
 
@@ -44,19 +51,25 @@ gulp.task('clean', () => {
 gulp.task('css', () => {
 	    return gulp.src(SRC.CSS)
 	           .pipe(cleanCSS({compatibility: 'ie8'}))
-	           .pipe(gulp.dest(DEST.CSS));
+	           .pipe(gulp.dest('app/public/css'));
 });
 
 gulp.task('html', () => {
 	    return gulp.src(SRC.HTML)
 	          .pipe(htmlmin({collapseWhitespace: true}))
-	          .pipe(gulp.dest(DEST.HTML))
+	          .pipe(gulp.dest('app/public/html'))
+});
+
+gulp.task('view', () => {
+	    return gulp.src(SRC.VIEW)
+	          .pipe(htmlmin({collapseWhitespace: true}))
+	          .pipe(gulp.dest(DEST.VIEW))
 });
 
 gulp.task('images', () => {
 	    return gulp.src(SRC.IMAGES)
 	           .pipe(imagemin())
-	           .pipe(gulp.dest(DEST.IMAGES));
+	           .pipe(gulp.dest('app/public/images'));
 });
 
 gulp.task('babel',() =>{
@@ -79,7 +92,7 @@ gulp.task('start',['babel'], () =>{
 gulp.task('webpack',() =>{
 	return gulp.src('src/js/main.js')
 	.pipe(webpack(webpackConfig))
-	.pipe(gulp.dest('dist/js'));
+	.pipe(gulp.dest('app/public/js'));
 })
 
 gulp.task('browser-sync', () => {
@@ -95,6 +108,7 @@ gulp.task('watch', () => {
 	    let watcher = {
 		            css: gulp.watch(SRC.CSS, ['css']),
 		            html: gulp.watch(SRC.HTML, ['html']),
+		            view: gulp.watch(SRC.VIEW, ['view']),
 		            images: gulp.watch(SRC.IMAGES, ['images']),
 			    babel : gulp.watch(SRC.SERVER, ['babel'])
 	    };
@@ -109,7 +123,7 @@ gulp.task('watch', () => {
 
 });
 
-gulp.task('default', ['clean','webpack', 'css', 'html', 'images', 'watch','start','browser-sync'], () => {
+gulp.task('default', ['clean','webpack', 'css', 'html','view', 'images', 'watch','start','browser-sync'], () => {
 	    gutil.log('Gulp is running');
 });
 

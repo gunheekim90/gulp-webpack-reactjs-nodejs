@@ -7,11 +7,13 @@ router.use((req,res,next) => {
 });
 
 router.get('/',(req,res) => {
-	res.send('articles');
+	res.send('articlesasdfasdf');
 });
 
 router.get('/read/:id',(req,res) => {
 	res.send('You are reading article'+req.params.id);
 });
+
+
 
 export default router

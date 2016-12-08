@@ -3,8 +3,17 @@ import articles from './routes/articles';
 
 
 const app = express();
+app.engine('html', require('ejs').renderFile);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'html');
 
-app.use('/',express.static(__dirname + '/../dist'));
+app.use(express.static(__dirname + '/public'));
+
+app.get('/',(req,res) =>{
+
+	res.render('index',{user: 'sex'});
+
+})
 
 app.get('/hello',(req,res) =>{
 

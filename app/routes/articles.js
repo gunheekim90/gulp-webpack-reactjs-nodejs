@@ -18,7 +18,7 @@ router.use(function (req, res, next) {
 });
 
 router.get('/', function (req, res) {
-	res.send('articles');
+	res.send('articlesasdfasdf');
 });
 
 router.get('/read/:id', function (req, res) {
