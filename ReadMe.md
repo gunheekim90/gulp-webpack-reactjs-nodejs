@@ -1,4 +1,9 @@
-format_module_node Vol 01.
+format_module_node Vol 02.
+
+Whats updated
+
++ We can EJS Rendering on view files
++ We use static resource file on node server
 
 next step is 'Combine JWT token API & passport SNS for login and regist
 and use React js on this environment
