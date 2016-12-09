@@ -19,7 +19,7 @@ so If you want this packging, you just follow this guide
 
 		 $npm init
 
-		 $git add remote origin "https://github.com/gunheekim90/format-module-node.git"
+		 $git clone "https://github.com/gunheekim90/format-module-node.git"
 
 And enjoy it
  
