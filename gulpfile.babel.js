@@ -16,7 +16,6 @@ import webpackConfig from './webpack.config.js';
 
 import browserSync from 'browser-sync';
 
-
 let cache = new Cache();
 
 const DIR = {
@@ -98,7 +97,7 @@ gulp.task('webpack',() =>{
 gulp.task('browser-sync', () => {
 	browserSync.init(null,{
 		proxy : "http://localhost:3000",
-		files : ["fist/**/*"],
+		files : ["app/**/*"],
 		port : 7000
 	})
 
