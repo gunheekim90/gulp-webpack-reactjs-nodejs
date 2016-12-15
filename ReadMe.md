@@ -1,4 +1,9 @@
-format_module_node Vol 01.
+format_module_node Vol 02.
+
+Whats updated
+
++ We can EJS Rendering on view files
++ We use static resource file on node server
 
 next step is 'Combine JWT token API & passport SNS for login and regist
 and use React js on this environment
@@ -14,7 +19,7 @@ so If you want this packging, you just follow this guide
 
 		 $npm init
 
-		 $git add remote origin "https://github.com/gunheekim90/format-module-node.git"
+		 $git clone "https://github.com/gunheekim90/format-module-node.git"
 
 And enjoy it
  
