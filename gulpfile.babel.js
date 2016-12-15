@@ -33,7 +33,6 @@ const SRC = {
 	    SERVER : 'server/**/*.js'
 };
 
-
 const DEST = {
 	    JS: DIR.DEST + '/js',
 	    CSS: DIR.DEST + '/css',

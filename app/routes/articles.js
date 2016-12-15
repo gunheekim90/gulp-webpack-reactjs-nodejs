@@ -13,7 +13,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = _express2.default.Router();
 
 router.use(function (req, res, next) {
-	console.log('Time: ', Date.now().toString());
+	var today = new Date();
+	var todayFull = Number(today.getFullYear()) + '-' + Number(today.getMonth() + 1) + '-' + Number(today.getDate());
+	console.log('Time: ', todayFull);
 	next();
 });
 

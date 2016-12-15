@@ -20,8 +20,6 @@ $ npm install --save-dev babel-core babel-preset-es2015
 
 and Lets make the code and file
 
-
-
 1. Make .babelrc  file to use ES2015
  {
   "presets": ["es2015"]

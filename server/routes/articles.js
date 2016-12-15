@@ -2,7 +2,9 @@ import express from 'express';
 const router = express.Router();
 
 router.use((req,res,next) => {
-	console.log('Time: ',Date.now().toString());
+	var today = new Date();
+	var todayFull = Number(today.getFullYear())+'-'+Number(today.getMonth()+1)+'-'+Number(today.getDate());
+	console.log('Time: ',todayFull);
 	next();
 });
 
