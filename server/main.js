@@ -10,10 +10,11 @@ const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 import mysql from 'mysql';
 
-// import db from './db.js';
+import db from './db.js';
 import articles from './routes/articles';
-// import myFunc from './config/passport';
-// myFund(passport);
+import login from './routes/login';
+import myFunc from './config/passport';
+myFunc(passport);
 
 const app = express();
 
@@ -51,9 +52,12 @@ app.get('/hello',(req,res) =>{
 //require('./routes/registerRoutes.js')(app,passport);
 // require('./routes/aboutRoutes.js')(app);
 app.use('/articles',articles);
+app.use('/login',login);
 
-const server = app.listen(3000, () =>{
-	console.log('Express listening on port 3000');
-});
+db.sequelize.sync({force : false}).then(() =>{
+	 app.listen(port, () =>{
+	console.log('Express listening on port'+port);
+ });
+})
 
 

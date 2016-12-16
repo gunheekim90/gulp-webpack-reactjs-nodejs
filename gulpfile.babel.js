@@ -99,7 +99,6 @@ gulp.task('browser-sync', () => {
 		files : ["app/**/*"],
 		port : 7000
 	})
-
 })
 
 gulp.task('watch', () => {
